@@ -1,0 +1,55 @@
+PROYECTO B - Registro de estudiantes 
+
+• Escribir un programa que permita gestionar un registro de estudiantes de una institución 
+educativa utilizando structs, punteros y memoria dinámica.
+
+• Incluir los campos número de identificación, nombre del estudiante, nombre de la carrera 
+en la que está inscrito, las notas de sus 3 asignaturas, costo de la colegiatura y fecha de 
+ingreso (la fecha es de tipo struct Fecha).
+
+• El programa debe contar con un menú principal con las opciones: agregar, eliminar, 
+modificar, buscar estudiantes y extras.
+
+• La opción extras debe permitir obtener el promedio de un estudiante indicado, también 
+mostrar el total de colegiaturas cobradas a todos los estudiantes, así como un listado 
+ordenado por fecha de ingreso a la institución.
+
+
+NOTAS PARA TODOS LOS PROYECTOS:
+
+• El programa debe hacer uso de memoria dinámica en lugar de arreglos estáticos para 
+almacenar los datos.
+
+• Hacer uso de apuntadores y notación de punteros para manejar la asignación y liberación 
+de memoria según sea necesario.
+
+
+RESTRICCIONES PARA TODOS LOS PROYECTOS:
+
+ Hacer uso de funciones.
+
+ El proyecto debe estar programado en su totalidad en lenguaje C. (no está permitido C#, 
+Visual C, etc.)
+
+ Se debe aplicar el paradigma de programación estructurada
+
+ Cuidar la buena presentación en pantalla del sistema.
+
+ No está permitido utilizar el paradigma de programación orientada a objetos. No clases, 
+no objetos, no variables globales. Si es posible usar cin y cout.
+
+ Agregue todas las funciones y operaciones que sean necesarias para cumplir con los 
+requerimientos (tomar en cuenta todos los casos que presentan la redacción del 
+proyecto).
+
+ Los nombres de las variables, constantes, tipos de datos definidos por el usuario, 
+funciones, etc., deben ser acorde al dato que almacenan o la acción que realizan. 
+
+ Es importante validar las capturas, así como no existir errores de ejecución, es decir, que 
+no “truene” el programa 
+
+ Proyectos con virus, errores de lectura, plagios, etc., automáticamente tienen calificación 
+cero. 
+
+ Proyecto copiado de Internet o de alguna otra fuente causará anulación para todos los 
+equipos involucrados.
