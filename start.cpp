@@ -222,18 +222,19 @@ Student add_student(Student new_student, int i)
     cin >> new_student.university_career; // career name
 
     // Grades
-    cout << "Grades"
+    cout << "Grades: "
          << endl;
 
     // call to "fill_grade"
     new_student.student_grades = fill_grade(grade_var);
 
     // tuition
-    cout << "tution cost: ";
+    cout << endl
+         << "Tution cost: $";
     cin >> new_student.tution_cost;
 
     // Date
-    cout << "Date of entry"
+    cout << "Date of entry: "
          << endl;
 
     // call to "fill_date"
