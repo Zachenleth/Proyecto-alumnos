@@ -10,7 +10,7 @@
 				"-g",
 				"${file}",
 				"-o",
-				"${fileDirname}\\${fileBasenameNoExtension}.exe"
+				"C:\\Users\\hecaa\\OneDrive - Universidad Autónoma de Aguascalientes\\Proyecto alumnos\\archivos ejecutables\\${fileBasenameNoExtension}.exe"
 			],
 			"options": {
 				"cwd": "${fileDirname}"
