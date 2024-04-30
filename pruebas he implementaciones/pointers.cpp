@@ -55,14 +55,10 @@ struct Date
     int
         dd,                // day
             *ptr_dd = &dd, // ptr to dd
+            mm,               // month
+            *ptr_mm = &mm, // ptr to mm
         yy,                // year
             *ptr_yy = &yy  // ptr to yy
-        ;
-
-    // Month (enum) variables
-    Month
-        mm,               // month
-            *ptr_mm = &mm // ptr to mm
         ;
 };
 
@@ -215,7 +211,6 @@ void print_message(const char message_title[], const char message_body[])
 // add_student, add a new student to registry
 Student add_student(Student *new_student, int *i)
 {
-    fflush(stdin);
     /*add_student function variables*/
 
     // int
@@ -359,8 +354,7 @@ Date fill_date(Date *new_date)
         // month
         cout << "\t"
              << "month: ";
-        scanf("%d", &
-        new_date->ptr_mm);
+        cin >> *new_date->ptr_mm;
 
         // year
         cout << "\t"
@@ -370,6 +364,7 @@ Date fill_date(Date *new_date)
         // call to "verify_date"
         if (verify_date(new_date))
         {
+            cout<<"verificacion exitosa";
             *ptr_vd = true;
         }
         else
@@ -390,8 +385,14 @@ bool verify_grade(Grade *verify)
 
     // boolean
     bool
-        verifier,
-        *ptr_verifier // ptr to verifier
+        verifier_all,
+        *ptr_verifier_all = &verifier_all, // ptr to verifier
+        verifier_first,
+        *ptr_verifier_first = &verifier_first, // ptr to verifier
+        verifier_second,
+        *ptr_verifier_second = &verifier_second, // ptr to verifier
+        verifier_third,
+        *ptr_verifier_third = &verifier_third // ptr to verifier
         ;
 
     /*check that it is less than 10 and greater than 0*/
@@ -399,34 +400,43 @@ bool verify_grade(Grade *verify)
     // first grade
     if (*verify->ptr_fg < 0 || *verify->ptr_fg > 10)
     {
-        *ptr_verifier = false;
+        *ptr_verifier_first = false;
     }
     else
     {
-        *ptr_verifier = true;
+        *ptr_verifier_first = true;
     }
 
     // second grade
     if (*verify->ptr_sg < 0 || *verify->ptr_sg > 10)
     {
-        *ptr_verifier = false;
+        *ptr_verifier_second = false;
     }
     else
     {
-        *ptr_verifier = true;
+        *ptr_verifier_second = true;
     }
 
     // third grade
     if (*verify->ptr_tg < 0 || *verify->ptr_tg > 10)
     {
-        *ptr_verifier = false;
+        *ptr_verifier_third = false;
     }
     else
     {
-        *ptr_verifier = true;
+        *ptr_verifier_third = true;
     }
 
-    return *ptr_verifier;
+    if (*ptr_verifier_first != true || *ptr_verifier_second != true || *ptr_verifier_third != true)
+    {
+        *ptr_verifier_all = false;
+    }
+    else
+    {
+        *ptr_verifier_all = true;
+    }
+
+    return *ptr_verifier_all;
 }
 
 bool verify_date(Date *verify)
