@@ -1,6 +1,5 @@
 /*  Proyecto B  -   version alpha 0.1 */
 
-#include <conio.h>
 #include <iostream>
 using namespace std;
 
@@ -92,7 +91,7 @@ Fecha fecha_nueva(Fecha *) // funcion nueva (fecha)
 
 // funciones Estudiante
 Estudiante
-estudiante_nuevo(Estudiante *, int *) // funcion nuevo (estudiante)
+registro_estudiante(Estudiante *) // funcion nuevo (estudiante)
     ;
 
 /*bloque utilidad*/
@@ -109,12 +108,9 @@ void menu(const char[], const char[][TAM], int) // funcion menu
 
 /*bloque registro*/
 
-// estudiante_nuevo
-Estudiante estudiante_nuevo(Estudiante *estudiante_registro_en_curso, int *estudiante_numero)
+// registro_estudiante
+Estudiante registro_estudiante(Estudiante &estudiante_registro_en_curso)
 {
-    cout << "hola!"
-         << endl;
-
     return *estudiante_registro_en_curso;
 }
 
@@ -166,41 +162,42 @@ int main()
 
     // Estudiante
     Estudiante
-        *estudiante_registro, // crea el registro
+        estudiante_registro, // crea el registro
+        *ptr_estudiante_registro=&estudiante_registro,  // apunta al registro
         *estudiante_lista     // lista de estudiantes
         ;
 
     // int
     int
-        usuario_opcion,                  // opcion del usuario
-            *ptr_uo = &usuario_opcion,   // puntero a usuario_opcion
-        estudiante_numero = 0,           // numero de estudiante en la lista
-            *ptr_en = &estudiante_numero // puntero a estudiante_numero
+        usuario_opcion,                                // opcion del usuario
+            *ptr_usuario_opcion = &usuario_opcion,     // puntero a usuario_opcion
+        estudiante_numero = 0,                         // numero de estudiante en la lista
+            *ptr_estudiante_nuevo = &estudiante_numero // puntero a estudiante_numero
         ;
 
     /*  inicio del programa */
     do
     {
-        system("cls"); // limpia la pantalla
+        system("clear"); // limpia la pantalla
 
         /*salida*/
         menu(main_encabezado, main_cuerpo, SALIR);
         cout << "> ";
-        cin >> *ptr_uo;
+        cin >> *ptr_usuario_opcion;
 
         /*divisor*/
-        switch (*ptr_uo)
+        switch (*ptr_usuario_opcion)
         {
         case CONSULTA:
             break;
         case REGISTRO:
-            estudiante_lista[*ptr_en] = estudiante_nuevo(estudiante_registro, ptr_en);
-            ptr_en++;
+            estudiante_lista[*ptr_estudiante_nuevo] = registro_estudiante(ptr_estudiante_registro);
+            ptr_estudiante_nuevo++;
             break;
         case MODIFICAR:
             break;
         }
-    } while (*ptr_uo != SALIR);
+    } while (*ptr_usuario_opcion != SALIR);
 
     return 0;
 }
@@ -208,4 +205,5 @@ int main()
 // verificar_calificaciones
 bool verificar_calificaciones(float *nuevas_calificaciones)
 {
+    return *nuevas_calificaciones;
 }

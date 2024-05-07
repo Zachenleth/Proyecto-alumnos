@@ -1,5 +1,4 @@
 #include <iostream>
-#include <conio.h>
 using namespace std;
 
 // temporal definitions
@@ -55,7 +54,7 @@ struct Date
     int
         dd,                // day
             *ptr_dd = &dd, // ptr to dd
-            mm,               // month
+        mm,                // month
             *ptr_mm = &mm, // ptr to mm
         yy,                // year
             *ptr_yy = &yy  // ptr to yy
@@ -164,17 +163,25 @@ int main()
         cout << "> ";   // prompt
         cin >> *ptr_uo; // input
 
+        system("clear");
+
         /*switch options*/
 
         switch (*ptr_uo)
         {
         case 1:
-            ptr_sl[*ptr_sc] = add_student(ptr_sv, ptr_sc);
-            ptr_sc++;
+            *(ptr_sl + *ptr_sc++) = add_student(ptr_sv, ptr_sc);
             break;
         case 2:
             break;
         case 3:
+            for (int i = 0; i != 4; i++)
+            {
+                for (int j = 0; j < 3; j++)
+                {
+                    cout << students_list[i].student_name << endl;
+                }
+            }
             break;
         case 4:
             break;
@@ -194,7 +201,6 @@ int main()
 void print_message(const char message_title[], const char message_body[])
 {
     // system clean command
-    system("cls");
 
     // title print
     cout << endl
@@ -261,7 +267,7 @@ Student add_student(Student *new_student, int *i)
          << endl;
 
     // call to "fill_grade"
-    fill_grade(ptr_gv);
+    new_student->student_grades = fill_grade(ptr_gv);
 
     // tuition
     cout << endl
@@ -273,7 +279,7 @@ Student add_student(Student *new_student, int *i)
          << endl;
 
     // call to "fill_date"
-    fill_date(ptr_dv);
+    new_student->date_of_entry = fill_date(ptr_dv);
 
     cout << endl;
     cout << "\tdd: " << *new_student->ptr_doe->ptr_dd << endl;
@@ -283,7 +289,8 @@ Student add_student(Student *new_student, int *i)
     // finisher
     cout << endl
          << "continue> ";
-    getch();
+    int blah;
+    cin >> blah;
 
     return *new_student;
 }
@@ -364,7 +371,7 @@ Date fill_date(Date *new_date)
         // call to "verify_date"
         if (verify_date(new_date))
         {
-            cout<<"verificacion exitosa";
+            cout << "verificacion exitosa";
             *ptr_vd = true;
         }
         else

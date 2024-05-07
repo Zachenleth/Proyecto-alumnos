@@ -1,5 +1,4 @@
 #include <iostream>
-#include <conio.h>
 using namespace std;
 
 // temporal definitions
@@ -93,8 +92,8 @@ struct Estudiante
     /*nested struct´s*/
 
     Calificaciones
-        estudiante_calificaciones,               // Calificaciones variable
-            *ptr_cd = &estudiante_calificaciones // ptr to estudiante_calificaciones
+        estudiante_calificacion,               // Calificaciones variable
+            *ptr_cd = &estudiante_calificacion // ptr to estudiante_calificaciones
         ;
     Fecha
         fecha_de_entrada,                // Fecha variable
@@ -107,7 +106,7 @@ void imprimir_cuerpo(const char[], const char[]);
 
 // add registry
 Estudiante estudiante_agregar(Estudiante *, int *);
-Calificaciones calificaciones_llenar(Calificaciones *);
+Calificaciones calificaciones_llenar(Calificaciones &);
 bool calificaciones_verificar(Calificaciones *);
 Fecha fecha_llenar(Fecha *);
 bool fecha_verificar(Fecha *);
@@ -277,7 +276,7 @@ Estudiante estudiante_agregar(Estudiante *new_Estudiante, int *i)
          << endl;
 
     // call to "fecha_llenar"
-    fecha_llenar(ptr_dv);
+    new_Estudiante->fecha_de_entrada=fecha_llenar(ptr_dv);
 
     cout << endl;
     cout << "\tdd: " << *new_Estudiante->ptr_fde->ptr_dd << endl;
@@ -287,7 +286,6 @@ Estudiante estudiante_agregar(Estudiante *new_Estudiante, int *i)
     // finisher
     cout << endl
          << "continue> ";
-    getch();
 
     return *new_Estudiante;
 }
@@ -358,8 +356,7 @@ Fecha fecha_llenar(Fecha *new_Fecha)
         // Mes
         cout << "\t"
              << "Mes: ";
-        scanf("%d", &
-        new_Fecha->ptr_mm);
+        scanf("%i", &new_Fecha->ptr_mm);
 
         // year
         cout << "\t"

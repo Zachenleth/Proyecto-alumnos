@@ -10,18 +10,20 @@ struct nombre
     char *nombre;
 };
 
-nombre registrar(nombre&);
+nombre registrar(nombre &);
 
 int main()
 {
     nombre *datos;
-    datos=(nombre*)malloc(TAM*sizeof(nombre));
+    datos = (nombre *)malloc(TAM * sizeof(nombre));
     nombre nuevo;
-    nombre *ptr=&nuevo;
-
-    for(int i=0;i<TAM;i++){
-        datos[i]=registrar(*ptr);
-    }
+    nombre *ptr = &nuevo;
+    int i = 0;
+    do
+    {
+        datos[i] = registrar(*ptr);
+        i++;
+    } while (i != TAM);
 
     system("clear");
 
@@ -42,12 +44,12 @@ int main()
 
 nombre registrar(nombre &ptr)
 {
-    ptr.nombre=(char*)malloc(ROW*sizeof(char));
+    ptr.nombre = (char *)malloc(ROW * sizeof(char));
 
     system("clear");
 
-    cout<<"escribe tu nombre: ";
-    fgets(ptr.nombre,ROW,stdin);
+    cout << "escribe tu nombre: ";
+    fgets(ptr.nombre, ROW, stdin);
 
     return ptr;
 }
